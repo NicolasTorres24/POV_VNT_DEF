@@ -4,9 +4,9 @@ import { Save, ArrowLeft, Trash2, Plus, X } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 const initialData = [
-  { id: 1, task: 'Design mockups', assignee: 'John Doe', status: 'In Progress' },
-  { id: 2, task: 'Frontend development', assignee: 'Jane Smith', status: 'Pending' },
-  { id: 3, task: 'Backend integration', assignee: 'Mike Johnson', status: 'Completed' }
+  { id: 1, task: 'Design mockups', assignee: 'John Doe', status: 'En progreso' },
+  { id: 2, task: 'Frontend development', assignee: 'Jane Smith', status: 'Pendiente' },
+  { id: 3, task: 'Backend integration', assignee: 'Mike Johnson', status: 'Completado' }
 ];
 
 const initialRow = {
@@ -25,7 +25,7 @@ export function ProjectCrud() {
 
   useEffect(() => {
     // In a real app, fetch project details and table data
-    setProjectTitle(`Project #${id}`);
+    setProjectTitle(`Tabla ODS ${id}`);
   }, [id]);
 
   const handleCellClick = (rowIndex, column) => {
@@ -49,7 +49,7 @@ export function ProjectCrud() {
 
   const handleSave = () => {
     // In a real app, save changes to backend
-    toast.success('Changes saved successfully!');
+    toast.success('Cambios Guardados');
     navigate('/');
   };
 
@@ -66,9 +66,9 @@ export function ProjectCrud() {
             autoFocus
             className="w-full p-1 border rounded"
           >
-            <option value="Pending">Pending</option>
-            <option value="In Progress">In Progress</option>
-            <option value="Completed">Completed</option>
+            <option value="Pending">Pendiente</option>
+            <option value="In Progress">En progreso</option>
+            <option value="Completed">Completado</option>
           </select>
         );
       } else {
@@ -105,7 +105,7 @@ export function ProjectCrud() {
               className="flex items-center text-gray-600 hover:text-gray-900"
             >
               <ArrowLeft size={20} className="mr-2" />
-              Back to Dashboard
+              Volver al Inicio
             </button>
             <h1 className="text-2xl font-bold text-gray-800">{projectTitle}</h1>
             <button
@@ -113,7 +113,7 @@ export function ProjectCrud() {
               className="flex items-center px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700"
             >
               <Save size={20} className="mr-2" />
-              Save Changes
+              Guardar Cambios
             </button>
           </div>
 
@@ -122,16 +122,16 @@ export function ProjectCrud() {
               <thead className="bg-gray-50">
                 <tr>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Task
+                    Tarea
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Assignee
+                    Asesor
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Status
+                    Estado
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Actions
+                    Accion
                   </th>
                 </tr>
               </thead>
@@ -167,7 +167,7 @@ export function ProjectCrud() {
               className="flex items-center px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"
             >
               <Plus size={20} className="mr-2" />
-              Add Row
+              Añadir Fila
             </button>
           </div>
         </div>

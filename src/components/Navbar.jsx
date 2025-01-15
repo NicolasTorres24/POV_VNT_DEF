@@ -19,7 +19,7 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           <div className="flex items-center">
-            <h1 className="text-xl font-bold text-indigo-600">Project Manager</h1>
+            <h1 className="text-xl font-bold text-indigo-600">Portal Operacional Vantrust</h1>
           </div>
           <div className="flex items-center gap-4">
             <span className="text-gray-600">{user.email}</span>
@@ -28,7 +28,7 @@ export function Navbar() {
               className="flex items-center gap-2 text-gray-600 hover:text-gray-900"
             >
               <LogOut size={20} />
-              Logout
+              Salir
             </button>
           </div>
         </div>

@@ -120,13 +120,13 @@ function ProjectCard({ project }) {
   };
 
   return (
-    <div className="bg-white rounded-xl overflow-hidden shadow-lg transition-all hover:shadow-xl">
+    <div className="bg-white rounded-xl overflow-hidden shadow-lg transition-all hover:shadow-xl flex flex-col">
       <img 
         src={project.image} 
         alt={project.title} 
         className="w-full h-48 object-cover"
       />
-      <div className="p-6">
+      <div className="p-6 flex flex-col flex-grow">
         <div className="flex justify-between items-start mb-4">
           <h2 className="text-xl font-bold text-gray-800">{project.title}</h2>
           <span className={`px-2 py-1 rounded-full text-sm font-medium ${statusColors[project.status]}`}>
@@ -136,9 +136,9 @@ function ProjectCard({ project }) {
         <p className="text-gray-600 mb-4">{project.description}</p>
         <button
           onClick={() => navigate(`/project/${project.id}`)}
-          className="w-full mt-4 flex items-center justify-center gap-2 py-2 px-4 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+          className="w-full mt-auto flex items-center justify-center gap-2 py-2 px-4 bg-gray-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
         >
-          <span>Manage Project</span>
+          <span>Editar Tabla</span>
           <ArrowRight size={16} />
         </button>
       </div>
@@ -166,12 +166,12 @@ export function Home() {
     <div className="min-h-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col sm:flex-row justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-800 mb-4 sm:mb-0">Project Dashboard</h1>
+          <h1 className="text-3xl font-bold text-gray-800 mb-4 sm:mb-0">Tablas UAT</h1>
           <button
             onClick={() => navigate('/project/new')}
-            className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors"
+            className="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors"
           >
-            New Project
+            Nueva Tabla
           </button>
         </div>
 
@@ -201,17 +201,17 @@ export function Home() {
               disabled={currentPage === 1}
               className="px-4 py-2 rounded-lg border border-gray-300 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
             >
-              Previous
+              Anterior
             </button>
             <span className="text-gray-600">
-              Page {currentPage} of {totalPages}
+              Pagina {currentPage} de {totalPages}
             </span>
             <button
               onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
               disabled={currentPage === totalPages}
               className="px-4 py-2 rounded-lg border border-gray-300 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
             >
-              Next
+              Siguiente
             </button>
           </div>
         )}

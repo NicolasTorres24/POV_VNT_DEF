@@ -14,7 +14,7 @@ export function Login() {
     e.preventDefault();
     try {
       await login(email, password);
-      toast.success('Welcome back!');
+      toast.success('Bienvenido');
       navigate('/');
     } catch (error) {
       toast.error('Invalid credentials');
@@ -26,13 +26,13 @@ export function Login() {
       <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-xl shadow-lg">
         <div className="text-center">
           <LogIn className="mx-auto h-12 w-12 text-indigo-600" />
-          <h2 className="mt-6 text-3xl font-bold text-gray-900">Sign in to your account</h2>
+          <h2 className="mt-6 text-3xl font-bold text-gray-900">Ingresa tus Datos</h2>
         </div>
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="space-y-4">
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                Email address
+                Correo
               </label>
               <input
                 id="email"
@@ -46,7 +46,7 @@ export function Login() {
             </div>
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                Password
+                Contraseña
               </label>
               <input
                 id="password"
@@ -63,7 +63,7 @@ export function Login() {
             type="submit"
             className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
-            Sign in
+            Ingresar
           </button>
         </form>
       </div>
