@@ -5,108 +5,27 @@ import { Search, ArrowRight } from 'lucide-react';
 const allProjects = [
   {
     id: 1,
-    title: "Marketing Campaign",
-    description: "Digital marketing campaign for Q1 2024",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200",
-    status: "active"
+    title: "SGT.MONEDA_GPI",
+    description: "Tabla SGT ubicada en ambiente UAT",
+    image: "https://images.unsplash.com/photo-1521897258701-21e2a01f5e8b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 2,
-    title: "Website Redesign",
-    description: "Complete overhaul of company website",
-    image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&q=80&w=1200",
-    status: "on-hold"
+    title: "SGT.INSTRUMENTO",
+    description: "Tabla SGT ubicada en ambiente UAT",
+    image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&q=80&w=1200"
   },
   {
     id: 3,
-    title: "Mobile App Development",
-    description: "New mobile app for customer engagement",
-    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=1200",
-    status: "completed"
+    title: "ODS.CIERRE_NEGOCIOS",
+    description: "Tabla ODS ubicada en ambiente UAT",
+    image: "https://images.unsplash.com/photo-1521791055366-0d553872125f?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 4,
-    title: "E-commerce Platform",
-    description: "Online shopping platform development",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=1200",
-    status: "active"
-  },
-  {
-    id: 5,
-    title: "Social Media Integration",
-    description: "Integrate social media platforms",
-    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=1200",
-    status: "completed"
-  },
-  {
-    id: 6,
-    title: "Customer Support System",
-    description: "Implement new support ticketing system",
-    image: "https://images.unsplash.com/photo-1549923746-c502d488b3ea?auto=format&fit=crop&q=80&w=1200",
-    status: "active"
-  },
-  {
-    id: 7,
-    title: "Data Analytics Dashboard",
-    description: "Real-time analytics dashboard",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200",
-    status: "on-hold"
-  },
-  {
-    id: 8,
-    title: "Cloud Migration",
-    description: "Migrate infrastructure to cloud",
-    image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80&w=1200",
-    status: "active"
-  },
-  {
-    id: 9,
-    title: "Security Audit",
-    description: "Comprehensive security assessment",
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=1200",
-    status: "completed"
-  },
-  {
-    id: 10,
-    title: "AI Integration",
-    description: "Implement AI-powered features",
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200",
-    status: "active"
-  },
-  {
-    id: 11,
-    title: "Payment Gateway",
-    description: "Integrate multiple payment methods",
-    image: "https://images.unsplash.com/photo-1559067096-49ebca3406aa?auto=format&fit=crop&q=80&w=1200",
-    status: "on-hold"
-  },
-  {
-    id: 12,
-    title: "Mobile Optimization",
-    description: "Optimize website for mobile devices",
-    image: "https://images.unsplash.com/photo-1526406915894-7bcd65f60845?auto=format&fit=crop&q=80&w=1200",
-    status: "completed"
-  },
-  {
-    id: 13,
-    title: "Content Management",
-    description: "New CMS implementation",
-    image: "https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&q=80&w=1200",
-    status: "active"
-  },
-  {
-    id: 14,
-    title: "Email Marketing",
-    description: "Automated email campaign system",
-    image: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&q=80&w=1200",
-    status: "on-hold"
-  },
-  {
-    id: 15,
-    title: "Performance Optimization",
-    description: "Improve website performance",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200",
-    status: "completed"
+    title: "SGT.PAISES_ISO",
+    description: "Tabla SGT ubicada en ambiente UAT",
+    image: "https://images.unsplash.com/photo-1555705771-de08424b42f3?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   }
 ];
 
@@ -166,7 +85,7 @@ export function Home() {
     <div className="min-h-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col sm:flex-row justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-800 mb-4 sm:mb-0">Tablas UAT</h1>
+          <h1 className="text-3xl font-bold text-gray-800 mb-4 sm:mb-0">Distribucion tablas ODS - SGT</h1>
           <button
             onClick={() => navigate('/project/new')}
             className="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors"
@@ -175,19 +94,21 @@ export function Home() {
           </button>
         </div>
 
-        <div className="mb-8">
+        <div className="mb-8 relative z-10">
           <div className="relative">
             <input
               type="text"
-              placeholder="Search projects..."
+              placeholder="Buscar tablas"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full px-4 py-2 pl-10 pr-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              className="w-full px-4 py-2 pl-10 pr-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent z-10"
             />
-            <Search className="absolute left-3 top-2.5 text-gray-400" size={20} />
+            <Search 
+              className="absolute left-3 top-2.5 text-gray-400 z-10" 
+              size={20} 
+            />
           </div>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {currentProjects.map((project) => (
             <ProjectCard key={project.id} project={project} />
