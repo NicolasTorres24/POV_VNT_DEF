@@ -41,7 +41,7 @@ export function Navbar() {
         <div className="flex justify-between h-16 items-center">
           {/* Logo / Title */}
           <div className="flex items-center">
-            <h1 className="text-xl font-bold text-indigo-600">Portal Operacional Vantrust</h1>
+            <h1 className="text-l font-bold text-black-600">Portal Operacional Vantrust</h1>
           </div>
 
           {/* Menu and Actions */}

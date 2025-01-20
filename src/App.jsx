@@ -7,6 +7,7 @@ import { Navbar } from './components/Navbar';
 import { Login } from './pages/Login';
 import { Home } from './pages/Home';
 import { ProjectCrud } from './pages/ProjectCrud';
+import { SistemaForm } from './components/sistemas/ins_sistemas/ins_sistemas';
 
 function App() {
   return (
@@ -29,6 +30,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <ProjectCrud />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/acceso/sistemas/:id"
+              element={
+                <ProtectedRoute>
+                  <SistemaForm />
                 </ProtectedRoute>
               }
             />
