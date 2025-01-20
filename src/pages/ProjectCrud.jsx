@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation} from 'react-router-dom';
 import { Save, ArrowLeft, X, Plus } from 'lucide-react';
 import toast from 'react-hot-toast';
 import jsonData from '../json/META.json';
@@ -8,12 +8,15 @@ export function ProjectCrud() {
   // Hooks para la navegación y obtención de parámetros de URL
   const { id } = useParams();
   const navigate = useNavigate();
-
+  const location = useLocation();
+  const title = location.state?.title;
+  
+  
   // Estados principales
   const [data, setData] = useState([]); // Almacena los datos de la tabla
   const [loading, setLoading] = useState(true); // Control del estado de carga
   const [editingCell, setEditingCell] = useState(null); // Control de celda en edición
-  
+
   // Efecto para cargar los datos iniciales del JSON
   useEffect(() => {
     try {
@@ -119,7 +122,7 @@ export function ProjectCrud() {
               <ArrowLeft size={20} className="mr-2" />
               Volver al Inicio
             </button>
-            <h1 className="text-2xl font-bold text-gray-800">Tabla ODS {id}</h1>
+            <h1 className="text-2xl font-bold text-gray-800"> Tabla {title || `Tabla ${id}`} </h1>
             <button
               onClick={handleSave}
               className="flex items-center px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700"
