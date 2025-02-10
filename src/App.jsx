@@ -9,6 +9,7 @@ import { Home } from './pages/Home';
 import { ProjectCrud } from './pages/ProjectCrud';
 import { SistemaForm } from './components/sistemas/ins_sistemas/ins_sistemas';
 import { SistemaForm_upd } from './components/sistemas/upd_sistemas/upd_sistemas';
+import { SelGrupo } from './components/grupo/sel_grupo/sel_grupo';
 
 function App() {
   return (
@@ -23,6 +24,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <Home />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/components/grupo/sel_grupo"
+              element={
+                <ProtectedRoute>
+                  <SelGrupo />
                 </ProtectedRoute>
               }
             />

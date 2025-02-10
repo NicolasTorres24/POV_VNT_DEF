@@ -4,11 +4,12 @@ const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [menuOptions, setMenuOptions] = useState([]); // ✅ Guardamos las opciones del menú
 
-  const login = async (username, password) => {
-    // Simulación de llamada a la API, reemplaza con tu lógica real
+  const login = async (username, password, opcionesMenu) => {
     if (username && password.length >= 6) {
-      setUser({ username, isAuthenticated: true }); // Usamos 'username' en vez de 'email'
+      setUser({ username, isAuthenticated: true });
+      setMenuOptions(opcionesMenu); // ✅ Guardamos las opciones del menú en el contexto
     } else {
       throw new Error('Credenciales inválidas');
     }
@@ -16,10 +17,11 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     setUser(null);
+    setMenuOptions([]); // Limpiamos opciones del menú al cerrar sesión
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, login, logout, menuOptions }}>
       {children}
     </AuthContext.Provider>
   );

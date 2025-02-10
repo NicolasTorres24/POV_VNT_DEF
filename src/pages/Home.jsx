@@ -93,7 +93,7 @@ export function Home() {
         <div className="flex flex-col sm:flex-row justify-between items-center mb-8">
           <h1 className="text-3xl font-bold text-gray-800 mb-4 sm:mb-0">Distribucion tablas ODS - SGT</h1>
           <button
-            onClick={() => navigate('/project/new')}
+            onClick={() => navigate('/components/grupo/sel_grupo')}
             className="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors"
           >
             Nueva Tabla
