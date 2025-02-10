@@ -8,6 +8,7 @@ import { Login } from './pages/Login';
 import { Home } from './pages/Home';
 import { ProjectCrud } from './pages/ProjectCrud';
 import { SistemaForm } from './components/sistemas/ins_sistemas/ins_sistemas';
+import { SistemaForm_upd } from './components/sistemas/upd_sistemas/upd_sistemas';
 
 function App() {
   return (
@@ -34,13 +35,22 @@ function App() {
               }
             />
             <Route
-              path="/acceso/sistemas/:id"
+              path="/components/sistemas/ins_sistemas/:id"
               element={
                 <ProtectedRoute>
                   <SistemaForm />
                 </ProtectedRoute>
-              }
+              }            
             />
+            <Route
+              path="/components/sistemas/upd_sistemas/:id"
+              element={
+                <ProtectedRoute>
+                  <SistemaForm_upd />
+                </ProtectedRoute>
+              }            
+            />
+            
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
           <Toaster position="top-right" />

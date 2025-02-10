@@ -1,0 +1,67 @@
+[
+    {
+      "ID_SISTEMAS": 7,
+      "NOMBRE": "Sistema Principal",
+      "DESCRIPCION": "Sistema de gestión principal",
+      "URL": "/sistema1",
+      "ICONO": "system-icon",
+      "ACTIVO": 1
+    },
+    {
+      "ID_SISTEMAS": 8,
+      "NOMBRE": "Sistema RRHH",
+      "DESCRIPCION": "Sistema de Recursos Humanos",
+      "URL": "/rrhh",
+      "ICONO": "hr-icon",
+      "ACTIVO": 1
+    },
+    {
+      "ID_SISTEMAS": 9,
+      "NOMBRE": "Sistema Ventas",
+      "DESCRIPCION": "Sistema de gestión de ventas y facturación",
+      "URL": "/ventas",
+      "ICONO": "shopping-cart-icon",
+      "ACTIVO": 1
+    },
+    {
+      "ID_SISTEMAS": 10,
+      "NOMBRE": "Sistema RRHH",
+      "DESCRIPCION": "Gestión de recursos humanos y personal",
+      "URL": "/rrhh",
+      "ICONO": "users-icon",
+      "ACTIVO": 1
+    },
+    {
+      "ID_SISTEMAS": 11,
+      "NOMBRE": "Sistema Contable",
+      "DESCRIPCION": "Control de contabilidad y finanzas",
+      "URL": "/contabilidad",
+      "ICONO": "money-icon",
+      "ACTIVO": 1
+    },
+    {
+      "ID_SISTEMAS": 12,
+      "NOMBRE": "Sistema Inventario",
+      "DESCRIPCION": "Control de stock y almacenes",
+      "URL": "/inventario",
+      "ICONO": "box-icon",
+      "ACTIVO": 0
+    },
+    {
+      "ID_SISTEMAS": 13,
+      "NOMBRE": "Sistema CRM",
+      "DESCRIPCION": "Gestión de relaciones con clientes",
+      "URL": "/crm",
+      "ICONO": "customers-icon",
+      "ACTIVO": 1
+    },
+    {
+      "ID_SISTEMAS": 14,
+      "NOMBRE": "Sistema Reportes",
+      "DESCRIPCION": "Generación de informes y estadísticas",
+      "URL": "/reportes",
+      "ICONO": "chart-icon",
+      "ACTIVO": 0
+    }
+  ]
+  

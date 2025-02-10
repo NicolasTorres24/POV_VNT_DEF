@@ -5,12 +5,12 @@ const AuthContext = createContext(null);
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
-  const login = async (email, password) => {
-    // In a real app, this would be an API call
-    if (email && password.length >= 6) {
-      setUser({ email, isAuthenticated: true });
+  const login = async (username, password) => {
+    // Simulación de llamada a la API, reemplaza con tu lógica real
+    if (username && password.length >= 6) {
+      setUser({ username, isAuthenticated: true }); // Usamos 'username' en vez de 'email'
     } else {
-      throw new Error('Invalid credentials');
+      throw new Error('Credenciales inválidas');
     }
   };
 

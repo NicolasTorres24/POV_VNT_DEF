@@ -1,88 +1,101 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { Save, ArrowLeft, Trash2, Plus, X } from 'lucide-react';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import { Save, ArrowLeft, X, Plus, Edit, Search } from 'lucide-react';
 import toast from 'react-hot-toast';
-
-const initialData = [
-  { id: 1, task: 'Design mockups', assignee: 'John Doe', status: 'En progreso' },
-  { id: 2, task: 'Frontend development', assignee: 'Jane Smith', status: 'Pendiente' },
-  { id: 3, task: 'Backend integration', assignee: 'Mike Johnson', status: 'Completado' }
-];
-
-const initialRow = {
-  id: '',
-  task: '',
-  assignee: '',
-  status: 'Pending'
-};
+import jsonData from '../json/SISTEMAS.json';
 
 export function ProjectCrud() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [projectTitle, setProjectTitle] = useState('');
-  const [tableData, setTableData] = useState(initialData);
+  const location = useLocation();
+  const title = location.state?.title;
+
+  const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [editingCell, setEditingCell] = useState(null);
+  const [searchName, setSearchName] = useState('');
+  const [searchId, setSearchId] = useState('');
 
   useEffect(() => {
-    // In a real app, fetch project details and table data
-    setProjectTitle(`Tabla ODS ${id}`);
-  }, [id]);
+    try {
+      setData(jsonData);
+      setFilteredData(jsonData);
+      setLoading(false);
+    } catch (error) {
+      console.error('Error al cargar los datos:', error);
+      setLoading(false);
+      toast.error('Error al cargar los datos');
+    }
+  }, []);
+
+  useEffect(() => {
+    const filtered = data.filter(item => {
+      const nameMatch = item.nombre?.toLowerCase().includes(searchName.toLowerCase());
+      const idMatch = item.id_sistema?.toString().includes(searchId);
+      
+      if (searchName && searchId) {
+        return nameMatch && idMatch;
+      } else if (searchName) {
+        return nameMatch;
+      } else if (searchId) {
+        return idMatch;
+      }
+      return true;
+    });
+    setFilteredData(filtered);
+  }, [searchName, searchId, data]);
+
+  const getColumns = () => {
+    if (data.length === 0) return [];
+    return Object.keys(data[0]).filter((key) => key !== 'id');
+  };
 
   const handleCellClick = (rowIndex, column) => {
     setEditingCell({ rowIndex, column });
   };
 
   const handleCellChange = (rowIndex, column, value) => {
-    const newData = [...tableData];
+    const newData = [...data];
     newData[rowIndex][column] = value;
-    setTableData(newData);
+    setData(newData);
   };
 
   const handleAddRow = () => {
-    setTableData([...tableData, { ...initialRow, id: Date.now() }]);
+    navigate(`/components/sistemas/ins_sistemas/}`);
   };
 
   const handleDeleteRow = (rowIndex) => {
-    const newData = tableData.filter((_, index) => index !== rowIndex);
-    setTableData(newData);
+    const actualIndex = data.findIndex(item => item === filteredData[rowIndex]);
+    const newData = data.filter((_, index) => index !== actualIndex);
+    setData(newData);
   };
 
   const handleSave = () => {
-    // In a real app, save changes to backend
+    console.log('Datos actualizados:', data);
     toast.success('Cambios Guardados');
     navigate('/');
   };
 
-  const renderCell = (value, rowIndex, column) => {
+  const handleEditRow = (row) => {
+    navigate(`/components/sistemas/upd_sistemas/${row.id}`, { state: { row } });
+  };
+  
+  const renderCell = (row, rowIndex, column) => {
+    const value = row[column];
     const isEditing = editingCell?.rowIndex === rowIndex && editingCell?.column === column;
 
     if (isEditing) {
-      if (column === 'status') {
-        return (
-          <select
-            value={value}
-            onChange={(e) => handleCellChange(rowIndex, column, e.target.value)}
-            onBlur={() => setEditingCell(null)}
-            autoFocus
-            className="w-full p-1 border rounded"
-          >
-            <option value="Pending">Pendiente</option>
-            <option value="In Progress">En progreso</option>
-            <option value="Completed">Completado</option>
-          </select>
-        );
-      } else {
-        return (
-          <input
-            type="text"
-            value={value}
-            onChange={(e) => handleCellChange(rowIndex, column, e.target.value)}
-            onBlur={() => setEditingCell(null)}
-            autoFocus
-            className="w-full p-1 border rounded"
-          />
-        );
-      }
+      return (
+        <input
+          type="text"
+          value={value || ''}
+          onChange={(e) => handleCellChange(rowIndex, column, e.target.value)}
+          onBlur={() => setEditingCell(null)}
+          autoFocus
+          className="w-full p-1 border rounded"
+        />
+      );
     }
 
     return (
@@ -95,11 +108,18 @@ export function ProjectCrud() {
     );
   };
 
+  if (loading)
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <p className="text-xl text-gray-600">Cargando datos...</p>
+      </div>
+    );
+
   return (
     <div className="min-h-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         <div className="bg-white rounded-xl shadow-lg p-8">
-          <div className="flex items-center justify-between mb-8">
+          <div className="mb-8 flex items-center">
             <button
               onClick={() => navigate('/')}
               className="flex items-center text-gray-600 hover:text-gray-900"
@@ -107,47 +127,67 @@ export function ProjectCrud() {
               <ArrowLeft size={20} className="mr-2" />
               Volver al Inicio
             </button>
-            <h1 className="text-2xl font-bold text-gray-800">{projectTitle}</h1>
-            <button
-              onClick={handleSave}
-              className="flex items-center px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700"
-            >
-              <Save size={20} className="mr-2" />
-              Guardar Cambios
-            </button>
+            <h1 className="flex-grow text-center text-2xl font-bold text-gray-800">
+              Tabla {title || `Tabla ${id}`}
+            </h1>
+          </div>
+
+          {/* Barra de búsqueda */}
+          <div className="mb-6 flex gap-4">
+            <div className="flex-1 relative">
+              <Search className="absolute left-3 top-2.5 h-5 w-5 text-gray-400" />
+              <input
+                type="text"
+                placeholder="Buscar por nombre..."
+                value={searchName}
+                onChange={(e) => setSearchName(e.target.value)}
+                className="pl-10 pr-4 py-2 w-full border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+              />
+            </div>
+            <div className="flex-1 relative">
+              <Search className="absolute left-3 top-2.5 h-5 w-5 text-gray-400" />
+              <input
+                type="text"
+                placeholder="Buscar por ID sistema..."
+                value={searchId}
+                onChange={(e) => setSearchId(e.target.value)}
+                className="pl-10 pr-4 py-2 w-full border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+              />
+            </div>
           </div>
 
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
+                  {getColumns().map((column) => (
+                    <th
+                      key={column}
+                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      {column}
+                    </th>
+                  ))}
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Tarea
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Asesor
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Estado
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Accion
+                    Acción
                   </th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
-                {tableData.map((row, rowIndex) => (
+                {filteredData.map((row, rowIndex) => (
                   <tr key={row.id}>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      {renderCell(row.task, rowIndex, 'task')}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      {renderCell(row.assignee, rowIndex, 'assignee')}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      {renderCell(row.status, rowIndex, 'status')}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    {getColumns().map((column) => (
+                      <td key={`${row.id}-${column}`} className="px-6 py-4 whitespace-nowrap">
+                        {renderCell(row, rowIndex, column)}
+                      </td>
+                    ))}
+                    <td className="px-6 py-4 whitespace-nowrap space-x-4">
+                      <button
+                        onClick={() => handleEditRow(row)}
+                        className="text-blue-600 hover:text-blue-900"
+                      >
+                        <Edit size={20} />
+                      </button>
                       <button
                         onClick={() => handleDeleteRow(rowIndex)}
                         className="text-red-600 hover:text-red-900"
@@ -161,13 +201,20 @@ export function ProjectCrud() {
             </table>
           </div>
 
-          <div className="mt-4">
+          <div className="mt-4 flex justify-between">
             <button
               onClick={handleAddRow}
               className="flex items-center px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"
             >
               <Plus size={20} className="mr-2" />
               Añadir Fila
+            </button>
+            <button
+              onClick={handleSave}
+              className="flex items-center px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700"
+            >
+              <Save size={20} className="mr-2" />
+              Guardar Cambios
             </button>
           </div>
         </div>

@@ -1,0 +1,63 @@
+[
+    {
+      "id_asesor": 46,
+      "meta": 13750000,
+      "fecha": "31-01-2024",
+      "dsc_meta": "FORWARD"
+    },
+    {
+      "id_asesor": 46,
+      "meta": 0,
+      "fecha": "31-01-2024",
+      "dsc_meta": "ACCIONES"
+    },
+    {
+      "id_asesor": 46,
+      "meta": 32083333,
+      "fecha": "31-01-2024",
+      "dsc_meta": "SPOT"
+    },
+    {
+      "id_asesor": 46,
+      "meta": 0,
+      "fecha": "31-01-2024",
+      "dsc_meta": "FFMM"
+    },
+    {
+      "id_asesor": 46,
+      "meta": 0,
+      "fecha": "31-01-2024",
+      "dsc_meta": "RENTA FIJA"
+    },
+    {
+      "id_asesor": 46,
+      "meta": 13750000,
+      "fecha": "29-02-2024",
+      "dsc_meta": "COLOCACIONES"
+    },
+    {
+      "id_asesor": 46,
+      "meta": 250000000,
+      "fecha": "29-02-2024",
+      "dsc_meta": "AUM"
+    },
+    {
+      "id_asesor": 46,
+      "meta": 50000000,
+      "fecha": "29-02-2024",
+      "dsc_meta": "APV"
+    },
+    {
+      "id_asesor": 46,
+      "meta": 25,
+      "fecha": "29-02-2024",
+      "dsc_meta": "REUNIONES"
+    },
+    {
+      "id_asesor": 46,
+      "meta": 2,
+      "fecha": "29-02-2024",
+      "dsc_meta": "CLIENTES NUEVOS"
+    }
+  ]
+  
